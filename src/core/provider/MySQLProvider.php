@@ -23,7 +23,7 @@ class MySQLProvider {
 	 */
 	public function __construct(Cryptic $core) {
 		$this->core = $core;
-		$this->database = new mysqli("127.0.0.1", "CrypticPE", "password", self::DATABASE);
+		$this->database = new mysqli("sql.mtxserv.com", "CrypticPE", "25211888Ed", self::DATABASE);
 		$this->init();
 	}
 
