@@ -6,10 +6,11 @@ namespace core\provider;
 
 use core\Cryptic;
 use mysqli;
+use pocketmine\Server;
 
 class MySQLProvider {
-
-	const DATABASE = "Season1";
+    
+	const DATABASE = "db_156062";
 
 	/** @var Cryptic */
 	private $core;
@@ -21,9 +22,9 @@ class MySQLProvider {
 	 *
 	 * @param Cryptic $core
 	 */
-	public function __construct(Cryptic $core) {
+	public function __construct($core) {
 		$this->core = $core;
-		$this->database = new mysqli("sql.mtxserv.com", "CrypticPE", "25211888Ed", self::DATABASE);
+		$this->database = new mysqli("na02-db.cus.mc-panel.net", "db_156062", "53706adbdf", self::DATABASE);
 		$this->init();
 	}
 
@@ -40,13 +41,17 @@ class MySQLProvider {
 		$this->database->query("CREATE TABLE IF NOT EXISTS kitCooldowns(xuid VARCHAR(36) PRIMARY KEY, username VARCHAR(16));");
 		$this->database->query("CREATE TABLE IF NOT EXISTS homes(xuid VARCHAR(36) NOT NULL, username VARCHAR(16), name VARCHAR(16) NOT NULL, x SMALLINT NOT NULL, y SMALLINT NOT NULL, z SMALLINT NOT NULL, level VARCHAR(30) NOT NULL);");
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getMainDatabaseName(): string {
 		return self::DATABASE;
 	}
+	   public static function queryAsync(string $query, string $types = "", array $params = [], ?callable $onComplete = null) : void{
+    }
+        //public static function querySync(string $query, string $types = "", array $params = []) : array{
+        //return [];
+    //}
 
 	/**
 	 * @return mysqli
